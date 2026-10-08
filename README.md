@@ -173,7 +173,7 @@ each tested against a measured baseline rather than assumed better. **Best: 1.61
 **Key mathematical results**
 
 - *Integral regression* makes keypoints differentiable expectations over a heatmap:
-  $\hat{\mathbf p}_k=\sum_{\mathbf u}\mathbf u\,\operatorname{softmax}(\beta H_k)(\mathbf u)$.
+  $\hat{\mathbf{p}}_k = \sum_{\mathbf{u}} \mathbf{u}\,\operatorname{softmax}(\beta H_k)(\mathbf{u})$.
 - *Centre-pull.* With targets in $[0,1]$ and $\beta=1$ the softmax is nearly flat, so the expectation is dragged toward
   the grid centre: ≈14px error on a **perfect** heatmap. σ=2 cells with β=12–15 cuts the decoder's own floor to
   0.02–0.03px. In trained models the slope of prediction on truth rises from **0.575 (v2) to 0.79 (v4)**.
