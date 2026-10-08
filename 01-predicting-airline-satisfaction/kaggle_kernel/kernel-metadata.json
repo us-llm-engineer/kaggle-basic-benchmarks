@@ -1,0 +1,16 @@
+{
+ "id": "datascience3345/predicting-airline-satisfaction-lgbm-shap",
+ "title": "Predicting Airline Satisfaction Lgbm Shap",
+ "code_file": "01_airline_satisfaction.ipynb",
+ "language": "python",
+ "kernel_type": "notebook",
+ "is_private": false,
+ "enable_gpu": false,
+ "enable_tpu": false,
+ "enable_internet": false,
+ "dataset_sources": [],
+ "competition_sources": [
+  "playground-series-s6e10"
+ ],
+ "kernel_sources": []
+}
