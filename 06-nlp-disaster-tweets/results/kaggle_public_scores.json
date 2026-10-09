@@ -1,0 +1,44 @@
+{
+  "metric": "F-Score (Micro) = accuracy for two classes; public leaderboard only (no private split reported by the API)",
+  "submissions": [
+    {
+      "ref": 56987814,
+      "model": "svm_cost",
+      "public": 0.80692,
+      "oof_f1": 0.7757,
+      "oof_accuracy": 0.8094
+    },
+    {
+      "ref": 56987962,
+      "model": "stack",
+      "public": 0.80937,
+      "oof_f1": 0.7752
+    },
+    {
+      "ref": 56987963,
+      "model": "nbsvm",
+      "public": 0.79926,
+      "oof_f1": 0.7669,
+      "oof_accuracy": 0.8043
+    },
+    {
+      "ref": 56987965,
+      "model": "fasttext",
+      "public": 0.787,
+      "oof_f1": 0.7571,
+      "oof_accuracy": 0.79
+    },
+    {
+      "ref": 56987966,
+      "model": "textcnn",
+      "public": 0.78118,
+      "oof_f1": 0.7397,
+      "oof_accuracy": 0.7801
+    }
+  ],
+  "not_yet_submitted": [
+    "tfidf_lr",
+    "cnb",
+    "gbdt"
+  ]
+}

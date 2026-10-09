@@ -1,0 +1,41 @@
+{
+  "solver_warnings_in_notebooks": {
+    "01_data_understanding.ipynb": 0,
+    "02_tfidf_baseline.ipynb": 0,
+    "03_traditional_methods.ipynb": 0,
+    "04_gradient_boosting_features.ipynb": 0,
+    "05_fasttext.ipynb": 0,
+    "06_text_cnn.ipynb": 0,
+    "07_comparison_and_stacking.ipynb": 0
+  },
+  "fasttext": {
+    "best_epoch_range": [
+      12,
+      15
+    ],
+    "runs": 10,
+    "stopped_by_patience": 8,
+    "hit_epoch_cap": 0,
+    "mean_train_inner_loss_gap": 0.2586937424764167
+  },
+  "textcnn": {
+    "best_epoch_range": [
+      5,
+      10
+    ],
+    "runs": 10,
+    "stopped_by_patience": 10,
+    "hit_epoch_cap": 0,
+    "mean_train_inner_loss_gap": 0.10768720436095065
+  },
+  "gbdt": {
+    "best_iterations": [
+      296,
+      238,
+      316,
+      628,
+      364
+    ],
+    "iteration_cap": 1500
+  }
+}

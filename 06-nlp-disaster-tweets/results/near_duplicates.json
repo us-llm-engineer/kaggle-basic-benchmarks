@@ -1,0 +1,50 @@
+{
+  "similarity_thresholds": {
+    "0.6": {
+      "train_share": 0.2462892420859057,
+      "test_share": 0.2457860864235366,
+      "pairs": 1875,
+      "label_differs": 0.17226666666666668
+    },
+    "0.7": {
+      "train_share": 0.23092079337974517,
+      "test_share": 0.22954336500153233,
+      "pairs": 1758,
+      "label_differs": 0.16609783845278725
+    },
+    "0.8": {
+      "train_share": 0.2047812951530277,
+      "test_share": 0.20655838185718664,
+      "pairs": 1559,
+      "label_differs": 0.16549069916613213
+    },
+    "0.9": {
+      "train_share": 0.16957835281754893,
+      "test_share": 0.16794361017468587,
+      "pairs": 1291,
+      "label_differs": 0.1680867544539117
+    }
+  },
+  "implied_per_label_noise_if_independent": 0.09262226033686605,
+  "cross_fold_bands": {
+    "0.6-0.8": {
+      "n": 246,
+      "svm_accuracy": 0.8536585365853658,
+      "neighbour_label_accuracy": 0.7886178861788617
+    },
+    "0.8-0.9": {
+      "n": 207,
+      "svm_accuracy": 0.8792270531400966,
+      "neighbour_label_accuracy": 0.855072463768116
+    },
+    "0.9-1.0": {
+      "n": 1035,
+      "svm_accuracy": 0.8705314009661835,
+      "neighbour_label_accuracy": 0.8415458937198068
+    },
+    "below_0.6": {
+      "n": 5738,
+      "svm_accuracy": 0.7908678982223771
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "svm_cost": {
+    "f1_threshold": {
+      "f1": 0.7756994898747874,
+      "accuracy": 0.8094049651911205,
+      "positive_rate": 0.42007093130172074
+    },
+    "accuracy_threshold": {
+      "f1": 0.7628830679678137,
+      "accuracy": 0.8180743465125443,
+      "positive_rate": 0.3375804544857481
+    }
+  },
+  "nbsvm": {
+    "f1_threshold": {
+      "f1": 0.7668961201501877,
+      "accuracy": 0.8042821489557336,
+      "positive_rate": 0.40995665309339285
+    },
+    "accuracy_threshold": {
+      "f1": 0.7654120700843609,
+      "accuracy": 0.8100617365033496,
+      "positive_rate": 0.38000788125574675
+    }
+  },
+  "cnb": {
+    "f1_threshold": {
+      "f1": 0.7639282341831917,
+      "accuracy": 0.8029686063312754,
+      "positive_rate": 0.4049651911204519
+    },
+    "accuracy_threshold": {
+      "f1": 0.7426160337552743,
+      "accuracy": 0.8076973597793249,
+      "positive_rate": 0.3174832523315382
+    }
+  },
+  "gbdt": {
+    "f1_threshold": {
+      "f1": 0.7480326651818857,
+      "accuracy": 0.7770918166294496,
+      "positive_rate": 0.4550111651123079
+    },
+    "accuracy_threshold": {
+      "f1": 0.7410384182607298,
+      "accuracy": 0.7883882831997898,
+      "positive_rate": 0.3874950742151583
+    }
+  },
+  "fasttext": {
+    "f1_threshold": {
+      "f1": 0.7571016253987544,
+      "accuracy": 0.7899645343491396,
+      "positive_rate": 0.4350453172205438
+    },
+    "accuracy_threshold": {
+      "f1": 0.7432004004672117,
+      "accuracy": 0.7978457900958886,
+      "positive_rate": 0.35754630237751217
+    }
+  },
+  "textcnn": {
+    "f1_threshold": {
+      "f1": 0.7396578538102644,
+      "accuracy": 0.7801129646657035,
+      "positive_rate": 0.4149481150663339
+    },
+    "accuracy_threshold": {
+      "f1": 0.731113740070982,
+      "accuracy": 0.7910153684487061,
+      "positive_rate": 0.3475633784316301
+    }
+  }
+}
