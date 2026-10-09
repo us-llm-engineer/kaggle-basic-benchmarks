@@ -46,11 +46,11 @@ configuration with a different seed: **0.022px**. Differences smaller than that 
 
 ## The mechanism that mattered: centre-pull in soft-argmax
 
-Integral regression turns a heatmap $H_k$ into coordinates with a differentiable expectation:
+Integral regression turns a heatmap $`H_k`$ into coordinates with a differentiable expectation:
 
-$$\hat{\mathbf{p}}_k = \sum_{\mathbf{u}} \mathbf{u}\,\operatorname{softmax}\big(\beta H_k\big)(\mathbf{u}).$$
+$$\hat{\mathbf{p}}_k = \sum_{\mathbf{u}} \mathbf{u}\,\mathrm{softmax}\big(\beta H_k\big)(\mathbf{u}).$$
 
-v2 trained $H_k$ towards a Gaussian with values in $[0,1]$ and used $\beta = 1$. A softmax of values that
+v2 trained $`H_k`$ towards a Gaussian with values in $`[0,1]`$ and used $`\beta = 1`$. A softmax of values that
 span only one unit is nearly flat, so every background cell keeps weight and the expectation is pulled toward the
 centre of the grid. Measured on **ideal** Gaussian heatmaps (no network involved), the error of the decoder alone:
 
@@ -70,14 +70,14 @@ with σ = 2 and a learnable β (which settled at 18.7 and 21.2). Raising v2's β
 ## Adaptive Wing Loss (v4b)
 
 MSE gives tiny gradients for the small errors that decide where a heatmap's peak sits. Adaptive Wing Loss
-(Wang, Bo & Li, ICCV 2019) adapts its shape to the target value $y$ of each pixel:
+(Wang, Bo & Li, ICCV 2019) adapts its shape to the target value $`y`$ of each pixel:
 
 $$\mathrm{AWing}(y,\hat y)=\begin{cases}\omega\ln\!\big(1+\lvert (y-\hat y)/\varepsilon\rvert^{\alpha-y}\big) & \lvert y-\hat y\rvert<\theta\\ A\lvert y-\hat y\rvert-C & \text{otherwise}\end{cases}$$
 
-with $A=\omega\,\frac{1}{1+(\theta/\varepsilon)^{\alpha-y}}\,(\alpha-y)\,(\theta/\varepsilon)^{\alpha-y-1}/\varepsilon$ and
-$C=\theta A-\omega\ln(1+(\theta/\varepsilon)^{\alpha-y})$, using $\omega=14,\ \theta=0.5,\ \varepsilon=1,\ \alpha=2.1$.
-Near a peak ($y\to1$) it behaves like Wing loss (large influence on small errors); on background ($y\to0$) it
-becomes MSE-like. A **Weighted Loss Map** multiplies the loss by $W\cdot M+1$ ($W=10$), where $M$ marks pixels whose
+with $`A=\omega\,\frac{1}{1+(\theta/\varepsilon)^{\alpha-y}}\,(\alpha-y)\,(\theta/\varepsilon)^{\alpha-y-1}/\varepsilon`$ and
+$`C=\theta A-\omega\ln(1+(\theta/\varepsilon)^{\alpha-y})`$, using $`\omega=14,\ \theta=0.5,\ \varepsilon=1,\ \alpha=2.1`$.
+Near a peak ($`y\to1`$) it behaves like Wing loss (large influence on small errors); on background ($`y\to0`$) it
+becomes MSE-like. A **Weighted Loss Map** multiplies the loss by $`W\cdot M+1`$ ($`W=10`$), where $`M`$ marks pixels whose
 3×3 grey dilation of the target is ≥ 0.2 — foreground plus the hard background next to it. v4b also raises the
 heatmap to 48×48 and adds CoordConv (two coordinate channels), as in the paper.
 
@@ -123,7 +123,7 @@ the figures are drawn afterwards. Dots on the RMSE panel are flip-test evaluatio
   0.38px of rigid error; v4b 0.09px — augmentation taught it global placement. v4b also has the lowest shape error
   (1.21px vs 1.51px), the effect expected from a loss that sharpens heatmap peaks.
 - **Decoders.** DARK's distribution-aware decoding (Zhang et al., CVPR 2020: smooth with a 3×3 Gaussian, then one
-  Newton step $\boldsymbol\mu = \mathbf{m} - \mathbf{H}^{-1}\mathbf{g}$ on the log-heatmap at its maximum) beats
+  Newton step $`\boldsymbol\mu = \mathbf{m} - \mathbf{H}^{-1}\mathbf{g}`$ on the log-heatmap at its maximum) beats
   argmax + ¼-cell shift on v4b (1.94 vs 2.05px), as its paper reports. But a network trained *through* soft-argmax
   is best decoded by soft-argmax (1.80px). v2's heatmaps are not peak-shaped at all, so peak-based decoders fail
   there (12–18px) — the same centre-pull story.

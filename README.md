@@ -173,14 +173,14 @@ each tested against a measured baseline rather than assumed better. **Best: 1.61
 **Key mathematical results**
 
 - *Integral regression* makes keypoints differentiable expectations over a heatmap:
-  $\hat{\mathbf{p}}_k = \sum_{\mathbf{u}} \mathbf{u}\,\operatorname{softmax}(\beta H_k)(\mathbf{u})$.
-- *Centre-pull.* With targets in $[0,1]$ and $\beta=1$ the softmax is nearly flat, so the expectation is dragged toward
+  $`\hat{\mathbf{p}}_k = \sum_{\mathbf{u}} \mathbf{u}\,\mathrm{softmax}(\beta H_k)(\mathbf{u})`$.
+- *Centre-pull.* With targets in $`[0,1]`$ and $`\beta=1`$ the softmax is nearly flat, so the expectation is dragged toward
   the grid centre: ≈14px error on a **perfect** heatmap. σ=2 cells with β=12–15 cuts the decoder's own floor to
   0.02–0.03px. In trained models the slope of prediction on truth rises from **0.575 (v2) to 0.79 (v4)**.
 - *Adaptive Wing Loss*
-  $\mathrm{AWing}(y,\hat y)=\omega\ln(1+|(y-\hat y)/\varepsilon|^{\alpha-y})$ for $|y-\hat y|<\theta$, linear beyond — the
-  exponent $\alpha-y$ makes it Wing-like on peaks (strong pull on small errors) and MSE-like on background, with a
-  Weighted Loss Map $(W\!\cdot\!M+1)$ emphasising foreground and hard background.
+  $`\mathrm{AWing}(y,\hat y)=\omega\ln(1+|(y-\hat y)/\varepsilon|^{\alpha-y})`$ for $`|y-\hat y|<\theta`$, linear beyond — the
+  exponent $`\alpha-y`$ makes it Wing-like on peaks (strong pull on small errors) and MSE-like on background, with a
+  Weighted Loss Map $`(W\!\cdot\!M+1)`$ emphasising foreground and hard background.
 - *Procrustes split* of each face's error: rigid (pose/scale) error falls from 0.38px (v2) to 0.09px (v4b); shape error
   from 1.51 to 1.21px.
 - *Decoders on v4b:* soft-argmax 1.80 < DARK 1.94 < argmax + ¼ shift 2.05px — DARK beats the heuristic, but a network
@@ -202,6 +202,57 @@ each tested against a measured baseline rather than assumed better. **Best: 1.61
 down-sampling plus a second stage that refines stage-1 heatmaps under intermediate supervision. It was too slow to
 train alongside the other runs (62 s/epoch at full resolution) and is left for a dedicated run with a stride-2 stem,
 then combined with v4b's loss.
+
+## #6: Disaster Tweets — classical NLP against small neural nets, no pre-training
+
+Is a tweet about a real disaster? Seven models trained **from scratch** (no pre-trained language models) on 7,613 tweets, compared on identical
+folds with paired statistics, then stacked. The leaderboard metric is micro-F1, which for two classes is accuracy.
+
+- **Best public score: 0.80937** (stack of all seven); best single model 0.80692 (cost-sensitive linear SVM).
+- **Project folder:** [`06-nlp-disaster-tweets/`](06-nlp-disaster-tweets/) — notebooks, from-scratch training code, tests, per-epoch statistics and 37 figures.
+
+| Model | OOF F1 | OOF accuracy | Public score |
+|---|---|---|---|
+| Stack of all 7 | 0.7752 | — | **0.80937** |
+| Cost-sensitive linear SVM | **0.7757** | 0.8094 | 0.80692 |
+| TF-IDF + logistic regression | 0.7720 | — | — |
+| NB-SVM | 0.7669 | 0.8043 | 0.79926 |
+| Complement Naive Bayes | 0.7639 | 0.8030 | — |
+| fastText-style (from scratch, GPU) | 0.7571 | 0.7900 | 0.78700 |
+| Gradient-boosted trees on topics + features | 0.7480 | 0.7771 | — |
+| Text CNN (from scratch, GPU) | 0.7397 | 0.7801 | 0.78118 |
+
+**Findings.** The linear TF-IDF family beats the from-scratch neural models (paired bootstrap, 95% interval excludes 0), and stacking all seven adds nothing measurable (F1 −0.0005,
+interval −0.005 to +0.004) because the models' errors overlap: 9.4% of tweets fool all seven. Nothing is under-trained (neural runs stop by patience after 5–15 epochs, 0 solver warnings).
+Near-identical tweet pairs carry different labels 16.8% of the time, which implies about 9% label noise and an accuracy ceiling near 90%; tweets without a close neighbour are classified at only 79%,
+the part that needs knowledge a pre-trained model would supply.
+
+**Key mathematics.** NB-SVM scales each n-gram by the Naive Bayes log-count ratio
+$`r=\log\frac{p/\lVert p\rVert_1}{q/\lVert q\rVert_1}`$; keyword rates are shrunk with a method-of-moments Beta prior
+$`\hat p_k=\frac{y_k+a}{n_k+a+b}`$; the fastText-style model averages hashed word/bigram embeddings,
+$`\hat y=\sigma\big(\mathbf w^{\top}\tfrac1{|d|}\sum_g\mathbf e_g+b\big)`$; the stack is $`\mathrm{logit}P(y{=}1)=b+\sum_m w_m z_m`$ on standardised out-of-fold scores;
+model differences use a paired bootstrap on F1; adversarial validation (AUC 0.486) shows train and test are exchangeable. Derivations in the project README.
+
+<table>
+<tr>
+<td width="50%"><img src="06-nlp-disaster-tweets/assets/leaderboard_submissions.png"><br><sub>Kaggle submissions: stack 0.80937, SVM 0.80692, NB-SVM 0.79926, fastText 0.78700, text CNN 0.78118.</sub></td>
+<td width="50%"><img src="06-nlp-disaster-tweets/assets/eda_03_keyword_polarisation.png"><br><sub>Data: keywords are polarised; the shrunk keyword rate alone gives AUC 0.788.</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="06-nlp-disaster-tweets/assets/fasttext_01_training_statistics.png"><br><sub>In-training: per-epoch loss, AUC, gradient and embedding norms for fastText (statistics only; figures drawn afterwards).</sub></td>
+<td width="50%"><img src="06-nlp-disaster-tweets/assets/textcnn_01_training_statistics.png"><br><sub>In-training: the same statistics for the text CNN; best epoch 5–10, then overfitting.</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="06-nlp-disaster-tweets/assets/cmp_01_f1_and_paired_tests.png"><br><sub>Post-training: F1 with bootstrap intervals and paired differences between all seven models.</sub></td>
+<td width="50%"><img src="06-nlp-disaster-tweets/assets/cmp_02_diversity.png"><br><sub>Post-training: score correlation and error overlap; a core of tweets fools every model.</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="06-nlp-disaster-tweets/assets/textcnn_05_token_saliency.png"><br><sub>Interpretation: token saliency of the CNN on held-out tweets, including a mislabelled one.</sub></td>
+<td width="50%"><img src="06-nlp-disaster-tweets/assets/gbdt_03_shap.png"><br><sub>Interpretation: SHAP values of the gradient-boosted trees.</sub></td>
+</tr>
+</table>
+
+**Future work.** Noise-aware training, richer classical features (stemming, hashtag splitting, longer character n-grams), more seeds for the neural models, and semi-supervised use of the unlabelled test text.
 
 ## Mathematical foundations (#1-3)
 
@@ -293,14 +344,22 @@ kaggle-basics/
 │   ├── submission.csv
 │   ├── assets/
 │   └── results/PROVENANCE.md
-└── 05-facial-keypoints-detection/
-    ├── README.md                      # every attempt, math, in-/post-training figures
-    ├── 01_v1_direct_regression.ipynb … 08_post_training_diagnostics.ipynb
-    ├── fkd_v4_common.py, fkd_v4_configs.py   # GPU augmentation, models, losses, decoders, training loop
-    ├── tests/                         # unit, mutation and smoke tests
-    ├── submission.csv
+├── 05-facial-keypoints-detection/
+│   ├── README.md                      # every attempt, math, in-/post-training figures
+│   ├── 01_v1_direct_regression.ipynb … 08_post_training_diagnostics.ipynb
+│   ├── fkd_v4_common.py, fkd_v4_configs.py   # GPU augmentation, models, losses, decoders, training loop
+│   ├── tests/                         # unit, mutation and smoke tests
+│   ├── submission.csv
+│   ├── assets/
+│   └── results/                       # per-epoch history, evaluation JSON, PROVENANCE.md
+└── 06-nlp-disaster-tweets/
+    ├── README.md                      # seven methods, math, every figure, convergence and noise analysis
+    ├── 01_data_understanding.ipynb … 07_comparison_and_stacking.ipynb
+    ├── nlp_common.py, nlp_dl.py, train_dl.py   # helpers, from-scratch models, resumable GPU training
+    ├── diagnostics.py, make_submissions.py, tests/
+    ├── submission.csv, submissions/
     ├── assets/
-    └── results/                       # per-epoch history, evaluation JSON, PROVENANCE.md
+    └── results/                       # OOF/test scores, per-epoch histories, summaries, PROVENANCE.md
 ```
 
 More competitions are added the same way — their own folder, notebook, diagnostics, and entry here.

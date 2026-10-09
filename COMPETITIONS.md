@@ -13,7 +13,7 @@ of this repo follows.
 | 3 | Predicting Smartphone Addiction | https://www.kaggle.com/competitions/playground-series-s6e8 | Tabular classification (ROC AUC) | Done — [`03-predicting-smartphone-addiction/`](03-predicting-smartphone-addiction/), LB 0.96506 |
 | 4 | Digit Recognizer | https://www.kaggle.com/competitions/digit-recognizer | Computer vision (CNN, MNIST) | Done — [`04-digit-recognizer/`](04-digit-recognizer/), LB 0.98860 |
 | 5 | Facial Keypoints Detection | https://www.kaggle.com/competitions/facial-keypoints-detection | Computer vision (image regression — keypoints) | Done — [`05-facial-keypoints-detection/`](05-facial-keypoints-detection/), RMSE 1.61419 private / 1.94381 public |
-| 6 | Natural Language Processing with Disaster Tweets | https://www.kaggle.com/competitions/nlp-getting-started | NLP text classification | Not started |
+| 6 | Natural Language Processing with Disaster Tweets | https://www.kaggle.com/competitions/nlp-getting-started | NLP text classification | Done — [`06-nlp-disaster-tweets/`](06-nlp-disaster-tweets/), public score 0.80937 |
 | 7 | Predicting Student Health Risk | https://www.kaggle.com/competitions/playground-series-s6e7 | Tabular classification (Balanced Accuracy) | Not started |
 | 8 | Predicting Stellar Class | https://www.kaggle.com/competitions/playground-series-s6e6 | Tabular multi-class (Balanced Accuracy) | Not started |
 | 9 | Predicting F1 Pit Stops | https://www.kaggle.com/competitions/playground-series-s6e5 | Tabular classification (ROC AUC) | Not started |
