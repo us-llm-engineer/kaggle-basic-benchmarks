@@ -254,6 +254,48 @@ model differences use a paired bootstrap on F1; adversarial validation (AUC 0.48
 
 **Future work.** Noise-aware training, richer classical features (stemming, hashtag splitting, longer character n-grams), more seeds for the neural models, and semi-supervised use of the unlabelled test text.
 
+## #7: Spooky Author Identification — count-based models against small neural nets, no pre-training
+
+Which of three horror authors (Poe, Lovecraft, Shelley) wrote a sentence? 19,579 training sentences, scored by multiclass log loss (lower is better; class-frequency baseline 1.0875).
+Fifteen models trained **from scratch** on identical folds, compared with paired bootstrap intervals, then stacked.
+
+- **Best Kaggle score: private 0.23384, public 0.25663** (stack of eight members; out-of-fold estimate 0.2492). A target near 0.15 was **not** reached.
+- **Project folder:** [`07-spooky-author-identification/`](07-spooky-author-identification/) — training code, tests, per-epoch statistics, 36 figures, three scored submissions.
+
+| | Model | Out-of-fold log loss | Accuracy |
+|---|---|---|---|
+| ML 1 | Word Generalized Language Model (skip n-grams + modified Kneser-Ney) | **0.3155** | 0.8746 |
+| ML 2 | Word modified Kneser-Ney language model | 0.3363 | 0.8656 |
+| ML 3 | NB-weighted n-gram logistic regression | 0.3441 | 0.8719 |
+| DL 1 | Shallow ANN (100, 50) on TF-IDF character 5-grams | **0.3754** | 0.8550 |
+| DL 2 | fastText-style averaged hashed word/bigram embeddings | 0.4723 | 0.8281 |
+| DL 3 | Character + word CNN | 0.4822 | 0.8066 |
+| stack | Logistic regression on the eight members' log-probabilities | **0.2492** | 0.9021 |
+
+**Findings.** Gains came from different kinds of evidence (word-level and character-level likelihood models), not from deeper networks: dropping the CNN from the stack changes the loss by 0.0001, and the best POS-tag sequence network reaches only 0.7302.
+The neural models overfit rather than fail (training loss near 0.01 while confidence keeps rising; see the in-training figures). Cleaning the text — normalising formatting artefacts, masking names and rare words — makes every member and the stack worse (+0.0036 to +0.0865),
+because those artefacts carry author evidence. The folds are leak-free (a model fitted on shuffled labels scores 1.5782, worse than the baseline). Details and every number's source file are in the project README.
+
+<table>
+<tr>
+<td width="50%"><img src="07-spooky-author-identification/assets/post_01_leaderboard.png"><br><sub>Post-training: out-of-fold log loss with bootstrap intervals for every model and the stack (`results/final_metrics_v2.csv`).</sub></td>
+<td width="50%"><img src="07-spooky-author-identification/assets/post_12_kaggle_scores.png"><br><sub>Out-of-fold estimate against Kaggle public and private scores for the three submissions (`results/kaggle_scores.csv`).</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="07-spooky-author-identification/assets/train_01_char_mlp.png"><br><sub>In-training: loss, confidence, calibration, gradients and dead units of the best neural model, per epoch.</sub></td>
+<td width="50%"><img src="07-spooky-author-identification/assets/train_03_pos_networks.png"><br><sub>In-training: the four POS-tag networks (CNN, BiLSTM, attention, fusion).</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="07-spooky-author-identification/assets/post_02_paired_differences.png"><br><sub>Post-training: paired log-loss differences between the best models.</sub></td>
+<td width="50%"><img src="07-spooky-author-identification/assets/post_10_cleaning_study.png"><br><sub>Cleaning study: all members and the stack on the original and three cleaned datasets.</sub></td>
+</tr>
+<tr>
+<td colspan="2"><img src="07-spooky-author-identification/assets/kaggle_submissions.png"><br><sub>Kaggle submissions page (late, so scored but not ranked): private 0.23384 / 0.23470 / 0.23495, public 0.25663 / 0.25784 / 0.25700.</sub></td>
+</tr>
+</table>
+
+**Future work.** Calibrated sequence models with richer inputs, per-author neural language models trained on far more text than 150k tokens per author, and a principled test of which surface cues are author evidence.
+
 ## Mathematical foundations (#1-3)
 
 **Metric — ROC AUC.** The probability that a randomly chosen positive example is ranked above a
@@ -352,14 +394,23 @@ kaggle-basics/
 │   ├── submission.csv
 │   ├── assets/
 │   └── results/                       # per-epoch history, evaluation JSON, PROVENANCE.md
-└── 06-nlp-disaster-tweets/
-    ├── README.md                      # seven methods, math, every figure, convergence and noise analysis
-    ├── 01_data_understanding.ipynb … 07_comparison_and_stacking.ipynb
-    ├── nlp_common.py, nlp_dl.py, train_dl.py   # helpers, from-scratch models, resumable GPU training
-    ├── diagnostics.py, make_submissions.py, tests/
-    ├── submission.csv, submissions/
+├── 06-nlp-disaster-tweets/
+│   ├── README.md                      # seven methods, math, every figure, convergence and noise analysis
+│   ├── 01_data_understanding.ipynb … 07_comparison_and_stacking.ipynb
+│   ├── nlp_common.py, nlp_dl.py, train_dl.py   # helpers, from-scratch models, resumable GPU training
+│   ├── diagnostics.py, make_submissions.py, tests/
+│   ├── submission.csv, submissions/
+│   ├── assets/
+│   └── results/                       # OOF/test scores, per-epoch histories, summaries, PROVENANCE.md
+└── 07-spooky-author-identification/
+    ├── README.md                      # three best ML and three best DL models, methods, math, findings, 36 figures
+    ├── 02_…07_*.ipynb                 # executed notebooks of the first-round models, pooling and character language models
+    ├── spooky_*.py, train_*.py, assemble_*.py   # models (word GLM/MKN, char LM, NB-LR, GBDT, MLP, fastText-style, CNN, POS networks), training, calibration
+    ├── improve_*.py, stack_final.py, make_submissions.py, clean_dataset.py, pipeline/   # pools, stack, submissions, cleaning study
+    ├── viz_in_training.py, viz_post_training.py, tests/, audit/
+    ├── submissions/                   # three scored submissions and earlier ones
     ├── assets/
-    └── results/                       # OOF/test scores, per-epoch histories, summaries, PROVENANCE.md
+    └── results/                       # out-of-fold scores, per-epoch statistics, logs behind every README number, PROVENANCE.md
 ```
 
 More competitions are added the same way — their own folder, notebook, diagnostics, and entry here.
