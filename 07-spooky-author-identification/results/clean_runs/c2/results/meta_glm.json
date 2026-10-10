@@ -1,0 +1,24 @@
+{
+  "method": "per-author word-level Generalized Language Model (skipped n-grams + modified Kneser-Ney, arXiv 1404.3377), from scratch",
+  "config": "lower_N5_cont",
+  "beta_all_rows": 0.2917025215453842,
+  "log_loss": 0.36223966595713386,
+  "log_loss_ci95": [
+    0.35280496625095914,
+    0.37234777039880224
+  ],
+  "accuracy": 0.8555595280657847,
+  "macro_f1": 0.8557901475780118,
+  "f1_per_author": {
+    "EAP": 0.854999682156252,
+    "HPL": 0.8609032723339043,
+    "MWS": 0.8514674882438787
+  },
+  "fold_log_loss": [
+    0.370404162202216,
+    0.35304201781896416,
+    0.3722058473992622,
+    0.36151991136569295,
+    0.35402429310043876
+  ]
+}

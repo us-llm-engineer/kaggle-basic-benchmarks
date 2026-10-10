@@ -1,0 +1,83 @@
+{
+  "method": "per-author word-level interpolated modified Kneser-Ney LM, from scratch (reproduces MKN of arXiv 1404.3377 App.A; skip patterns not implemented)",
+  "casing": "lower",
+  "order": 4,
+  "beta_all_rows": 0.2586633442673655,
+  "grid": [
+    {
+      "tag": "cased",
+      "order": 1,
+      "log_loss": 0.4406543006841066,
+      "accuracy": 0.8218499412635988,
+      "mean_beta": 0.5151372260862435
+    },
+    {
+      "tag": "cased",
+      "order": 2,
+      "log_loss": 0.3539802558626055,
+      "accuracy": 0.8606670412176312,
+      "mean_beta": 0.29354120461789857
+    },
+    {
+      "tag": "cased",
+      "order": 3,
+      "log_loss": 0.3408509876474238,
+      "accuracy": 0.8673578834465498,
+      "mean_beta": 0.2617742797937228
+    },
+    {
+      "tag": "cased",
+      "order": 4,
+      "log_loss": 0.341329149863792,
+      "accuracy": 0.8655702538434037,
+      "mean_beta": 0.2528837590334197
+    },
+    {
+      "tag": "lower",
+      "order": 1,
+      "log_loss": 0.4401665862274515,
+      "accuracy": 0.8239440216558558,
+      "mean_beta": 0.5315457661175698
+    },
+    {
+      "tag": "lower",
+      "order": 2,
+      "log_loss": 0.35184533361610154,
+      "accuracy": 0.8590326370090403,
+      "mean_beta": 0.3004507565688523
+    },
+    {
+      "tag": "lower",
+      "order": 3,
+      "log_loss": 0.33748497653561466,
+      "accuracy": 0.866489606210736,
+      "mean_beta": 0.26695617292774837
+    },
+    {
+      "tag": "lower",
+      "order": 4,
+      "log_loss": 0.3363479380515958,
+      "accuracy": 0.8655702538434037,
+      "mean_beta": 0.25868647087875873
+    }
+  ],
+  "log_loss": 0.3363479380515958,
+  "log_loss_ci95": [
+    0.32717390188147516,
+    0.34590201475831867
+  ],
+  "accuracy": 0.8655702538434037,
+  "macro_f1": 0.8658909468432284,
+  "f1_per_author": {
+    "EAP": 0.8639499233520695,
+    "HPL": 0.8709619526202441,
+    "MWS": 0.8627609645573717
+  },
+  "fold_log_loss": [
+    0.3520395169982773,
+    0.3227828298007014,
+    0.3425416344708484,
+    0.33486531279416804,
+    0.3295086496954251
+  ]
+}

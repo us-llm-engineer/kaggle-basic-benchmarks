@@ -1,0 +1,7 @@
+cased_N4_cont      calibrated log loss 0.3194 acc 0.8740
+lower_N3_cont      calibrated log loss 0.3225 acc 0.8734
+lower_N3_raw       calibrated log loss 0.3263 acc 0.8721
+lower_N4_cont      calibrated log loss 0.3161 acc 0.8736
+lower_N4_raw       calibrated log loss 0.3184 acc 0.8739
+lower_N5_cont      calibrated log loss 0.3155 acc 0.8746
+CHOSEN lower_N5_cont: 0.3155 [0.3064 0.3252] acc 0.8746

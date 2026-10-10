@@ -1,0 +1,25 @@
+rows 19579 test 8392 fold sizes [3916, 3916, 3916, 3916, 3915] class counts [7900, 5635, 6044]
+duplicate texts in train: 0 | train/test text overlap: 0
+chars: mean 149 median 128 p90 267 max 4663
+  share of sentences longer than 128 chars: 0.500
+  share of sentences longer than 160 chars: 0.357
+  share of sentences longer than 256 chars: 0.114
+
+--- stored OOF probabilities: independent metric re-derivation (sklearn) ---
+nblr        valid_probs=True ours=0.3441 sklearn=0.3441 acc=0.8719 test_rows=8392 test_mean_class_share=[0.416, 0.276, 0.307]
+style_gbdt  valid_probs=True ours=0.6276 sklearn=0.6276 acc=0.7355 test_rows=8392 test_mean_class_share=[0.407, 0.283, 0.31]
+cnn         valid_probs=True ours=0.4822 sklearn=0.4822 acc=0.8066 test_rows=8392 test_mean_class_share=[0.385, 0.294, 0.321]
+charlm      valid_probs=True ours=0.3784 sklearn=0.3784 acc=0.8487 test_rows=8392 test_mean_class_share=[0.394, 0.306, 0.299]
+char_svm    valid_probs=True ours=0.4062 sklearn=0.4062 acc=0.8515 test_rows=8392 test_mean_class_share=[0.405, 0.281, 0.314]
+pool_geo    valid_probs=True ours=0.3373 sklearn=0.3373 acc=0.8719 test_rows=8392 test_mean_class_share=[0.416, 0.276, 0.308]
+
+--- CNN fold histories ---
+fold 0: epochs 8 best 7 train_loss@best 0.201 inner 0.497 outer_mon 0.513 final train 0.201 outer_mon_min 0.506
+fold 1: epochs 8 best 5 train_loss@best 0.354 inner 0.485 outer_mon 0.482 final train 0.222 outer_mon_min 0.482
+fold 2: epochs 8 best 5 train_loss@best 0.350 inner 0.486 outer_mon 0.473 final train 0.217 outer_mon_min 0.470
+fold 3: epochs 8 best 5 train_loss@best 0.352 inner 0.498 outer_mon 0.483 final train 0.213 outer_mon_min 0.483
+fold 4: epochs 8 best 5 train_loss@best 0.334 inner 0.481 outer_mon 0.495 final train 0.214 outer_mon_min 0.495
+
+--- GRU/Transformer screen records ---
+char_gru_f0_history.json epochs 80 best inner 0.750 best epoch 27
+char_transformer_f0_history.json epochs 19 best inner 0.947 best epoch 4

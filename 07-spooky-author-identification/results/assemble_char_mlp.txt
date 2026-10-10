@@ -1,0 +1,8 @@
+mlp_N3  : raw 0.4854 -> temperature-scaled 0.4862 [0.4759 0.4957] acc 0.8047 | best epochs [1, 2, 1, 2, 2] | stopped at epochs [22, 23, 22, 23, 23] | features 11550 | T [1.08, 1.04, 1.08, 1.03, 1.01]
+        at best epoch (mean over folds): train 0.399 inner 0.491 conf 0.812 ece 0.025; final epoch: train 0.0391 inner 1.411 conf 0.949 ece 0.192
+mlp_N4  : raw 0.3982 -> temperature-scaled 0.3967 [0.3872 0.4065] acc 0.8426 | best epochs [1, 1, 1, 1, 1] | stopped at epochs [22, 22, 22, 22, 22] | features 49858 | T [0.9, 0.93, 0.91, 0.91, 0.91]
+        at best epoch (mean over folds): train 0.354 inner 0.395 conf 0.829 ece 0.022; final epoch: train 0.0033 inner 0.785 conf 0.936 ece 0.135
+mlp_N5  : raw 0.3815 -> temperature-scaled 0.3782 [0.3685 0.3882] acc 0.8527 | best epochs [1, 1, 1, 1, 1] | stopped at epochs [22, 22, 22, 22, 22] | features 142418 | T [0.86, 0.89, 0.88, 0.88, 0.88]
+        at best epoch (mean over folds): train 0.320 inner 0.379 conf 0.831 ece 0.027; final epoch: train 0.0027 inner 0.627 conf 0.920 ece 0.112
+mlp_N25 : raw 0.3865 -> temperature-scaled 0.3853 [0.3757 0.3948] acc 0.8479 | best epochs [1, 1, 1, 1, 1] | stopped at epochs [22, 22, 22, 22, 22] | features 205370 | T [0.91, 0.93, 0.92, 0.93, 0.91]
+        at best epoch (mean over folds): train 0.297 inner 0.386 conf 0.835 ece 0.022; final epoch: train 0.1219 inner 0.783 conf 0.927 ece 0.131

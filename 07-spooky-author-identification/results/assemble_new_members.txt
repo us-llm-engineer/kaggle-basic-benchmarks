@@ -1,0 +1,14 @@
+wordlm cased order 1: calibrated log loss 0.4407 acc 0.8218 mean beta 0.515
+wordlm cased order 2: calibrated log loss 0.3540 acc 0.8607 mean beta 0.294
+wordlm cased order 3: calibrated log loss 0.3409 acc 0.8674 mean beta 0.262
+wordlm cased order 4: calibrated log loss 0.3413 acc 0.8656 mean beta 0.253
+wordlm lower order 1: calibrated log loss 0.4402 acc 0.8239 mean beta 0.532
+wordlm lower order 2: calibrated log loss 0.3518 acc 0.8590 mean beta 0.300
+wordlm lower order 3: calibrated log loss 0.3375 acc 0.8665 mean beta 0.267
+wordlm lower order 4: calibrated log loss 0.3363 acc 0.8656 mean beta 0.259
+CHOSEN wordlm lower order 4: log loss 0.3363 [0.3272 0.3459] acc 0.8656
+fasttext word h=10: raw log loss 0.4992 -> temperature-scaled 0.4955 acc 0.8222 best epochs [4, 7, 6, 6, 5] T [1.27, 1.14, 1.16, 1.17, 1.17]
+fasttext word h=30: raw log loss 0.4843 -> temperature-scaled 0.4723 acc 0.8281 best epochs [6, 7, 5, 6, 5] T [1.24, 1.25, 1.28, 1.27, 1.28]
+fasttext char h=10: raw log loss 0.4880 -> temperature-scaled 0.4868 acc 0.8224 best epochs [18, 19, 19, 17, 17] T [1.08, 1.11, 1.08, 1.1, 1.07]
+fasttext char h=30: raw log loss 0.4886 -> temperature-scaled 0.4875 acc 0.8223 best epochs [18, 19, 19, 17, 17] T [1.08, 1.11, 1.08, 1.09, 1.07]
+CHOSEN fasttext word h=30: log loss 0.4723 [0.4597 0.4841] acc 0.8281

@@ -1,0 +1,10 @@
+order 1: calibrated log loss 1.0002 accuracy 0.5030 macro-F1 0.5012 | raw (beta = 1) log loss 1.164 accuracy 0.5030 | mean beta 0.347
+order 2: calibrated log loss 0.7791 accuracy 0.6537 macro-F1 0.6526 | raw (beta = 1) log loss 0.931 accuracy 0.6537 | mean beta 0.442
+order 3: calibrated log loss 0.5830 accuracy 0.7597 macro-F1 0.7595 | raw (beta = 1) log loss 0.946 accuracy 0.7597 | mean beta 0.301
+order 4: calibrated log loss 0.4759 accuracy 0.8134 macro-F1 0.8134 | raw (beta = 1) log loss 1.064 accuracy 0.8134 | mean beta 0.211
+order 5: calibrated log loss 0.4592 accuracy 0.8210 macro-F1 0.8209 | raw (beta = 1) log loss 1.321 accuracy 0.8210 | mean beta 0.158
+order 6: calibrated log loss 0.4534 accuracy 0.8189 macro-F1 0.8189 | raw (beta = 1) log loss 1.630 accuracy 0.8189 | mean beta 0.124
+order 7: calibrated log loss 0.4458 accuracy 0.8190 macro-F1 0.8187 | raw (beta = 1) log loss 1.890 accuracy 0.8190 | mean beta 0.105
+order 8: calibrated log loss 0.4415 accuracy 0.8203 macro-F1 0.8200 | raw (beta = 1) log loss 2.084 accuracy 0.8203 | mean beta 0.094
+order 9: calibrated log loss 0.4394 accuracy 0.8221 macro-F1 0.8220 | raw (beta = 1) log loss 2.202 accuracy 0.8221 | mean beta 0.088
+CHOSEN order 9: log loss 0.4394 [0.4295 0.4487] accuracy 0.8221 macro-F1 0.8220 per-author F1 {'EAP': 0.825, 'HPL': 0.827, 'MWS': 0.814}

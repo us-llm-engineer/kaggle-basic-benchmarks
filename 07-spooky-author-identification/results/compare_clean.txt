@@ -1,0 +1,12 @@
+member                    original            c1 fmt+unk      c2 fmt+names+unk  c3 fmt+names+distort
+nblr                        0.3441                0.3481                0.3893                0.4201
+style_gbdt                  0.6276                0.6322                0.6458                0.6516
+charlm                      0.3784                0.3800                0.4394                0.5095
+wordlm                      0.3363                0.3448                0.3832                0.4269
+glm                         0.3155                0.3237                0.3622                0.4191
+fasttext                    0.4723                0.4724                0.5175                0.6471
+char_svm                    0.4062                0.4091                0.4498                0.4767
+STACK original               log loss 0.2493 [0.2412 0.2595] acc 0.9023
+STACK c1 fmt+unk             log loss 0.2529 [0.245  0.2625] acc 0.9015 | vs original +0.0036 [+0.0021, +0.0049]
+STACK c2 fmt+names+unk       log loss 0.2919 [0.2835 0.303 ] acc 0.8866 | vs original +0.0425 [+0.0391, +0.0459]
+STACK c3 fmt+names+distort   log loss 0.3358 [0.3276 0.347 ] acc 0.8684 | vs original +0.0865 [+0.0813, +0.0916]

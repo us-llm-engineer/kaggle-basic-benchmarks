@@ -1,0 +1,29 @@
+rows 19579 8392
+non-ASCII chars: {'é': 79, 'æ': 54, 'ê': 45, 'è': 26, 'ö': 24, 'ë': 17, 'ô': 11, 'à': 10, 'ä': 10, 'ï': 10, 'ñ': 9, 'ü': 9, 'â': 7, 'Æ': 7, 'Ο': 3, 'ἶ': 2, 'δ': 2, 'α': 2, 'î': 1, 'Υ': 1, 'Π': 1, 'Ν': 1, 'Σ': 1, 'Å': 1, 'ç': 1} rows containing any: 266
+double space             rows      0 ( 0.0%)
+leading/trailing space   rows      0 ( 0.0%)
+space before punct       rows    411 ( 1.5%)
+digits                   rows      0 ( 0.0%)
+straight dq              rows   3381 (12.1%)
+curly dq/sq              rows      0 ( 0.0%)
+apostrophe '             rows   2906 (10.4%)
+hyphen -                 rows      0 ( 0.0%)
+em dash                  rows      0 ( 0.0%)
+ellipsis ...             rows     25 ( 0.1%)
+ALLCAPS word>1           rows    201 ( 0.7%)
+underscore               rows      0 ( 0.0%)
+parenthesis              rows      0 ( 0.0%)
+length: mean 149 p50 128 p99 473 max 4663 | rows >600 chars: 87 | rows <30 chars: 660
+
+per-author (train): mean chars, share with digits, share with non-ASCII, share ending with .!?, share starting lowercase
+EAP:  142.2 0.0000 0.0165 0.937 0.0082
+HPL:  155.8 0.0000 0.0119 0.989 0.0067
+MWS:  151.7 0.0000 0.0000 0.952 0.0020
+
+tokens 852390 types 28334 hapax 9815 types with count<=2 13863
+examples with non-ASCII:
+   '"But, my dear fellow, you are joking then," said I, "this is a very passable skull indeed, I may say that it i'
+   "Sheehan's is the acknowledged centre to Chicago's subterranean traffic in liquor and narcotics, and as such ha"
+   'Accordingly, I was no sooner seated at the card table, with my pretty hostess for a vis à vis, than I propound'
+   '"C\'est à vous à faire," said his Majesty, cutting.'
+long row example: 'Diotima approached the fountain seated herself on a mossy mound near it and her disciples placed themselves on the grass near her Without noticing me who sat close under her she continued her discours'

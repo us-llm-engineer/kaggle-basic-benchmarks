@@ -1,0 +1,7 @@
+REFERENCE pool4       log loss 0.2661 [0.2576 0.2753] acc 0.8965
+REFERENCE pool4_dir   log loss 0.2644 [0.2559 0.2736] acc 0.8981
+pool7           log loss 0.2523 [0.2438 0.2622] acc 0.9006 | vs pool4_dir diff -0.0121 [-0.0144 -0.0096] | exps [0.382, 0.124, 0.077, 0.377, 0.086, 0.304, 0.016] (56s)
+pool7_dir       log loss 0.2512 [0.243  0.2613] acc 0.9018 | vs pool4_dir diff -0.0131 [-0.0155 -0.0109] | exps [0.382, 0.124, 0.077, 0.377, 0.086, 0.304, 0.016] (207s)
+pool_nodeep_glm log loss 0.2511 [0.2428 0.2611] acc 0.9009 | vs pool4_dir diff -0.0133 [-0.0159 -0.0107] | exps [0.3, 0.11, 0.364, 0.091, 0.31, 0.012, 0.214] (59s)
+pool_nodeep_glm_dir log loss 0.2499 [0.2415 0.2596] acc 0.9020 | vs pool4_dir diff -0.0145 [-0.017  -0.0121] | exps [0.3, 0.11, 0.364, 0.091, 0.31, 0.012, 0.214] (230s)
+done

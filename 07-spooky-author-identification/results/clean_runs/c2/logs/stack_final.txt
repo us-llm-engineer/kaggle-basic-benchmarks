@@ -1,0 +1,1 @@
+stack of 7 [nblr,style_gbdt,charlm,wordlm,glm,fasttext,char_svm]: log loss 0.2919 [0.2835 0.303 ] acc 0.8866

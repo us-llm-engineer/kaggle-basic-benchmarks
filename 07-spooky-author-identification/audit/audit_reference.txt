@@ -1,0 +1,2 @@
+sklearn word-TFIDF LR (C=30)               OOF log loss 0.4159 acc 0.8363  (73s)
+sklearn MultinomialNB (alpha=.1)           OOF log loss 0.8208 acc 0.8514  (79s)

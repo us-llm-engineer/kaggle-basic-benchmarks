@@ -1,0 +1,66 @@
+{
+  "pool_all": {
+    "log_loss": 0.3373382864428377,
+    "ci95": [
+      0.32715776483723763,
+      0.34775053875438755
+    ],
+    "accuracy": 0.8718524950201747,
+    "macro_f1": 0.8717668139159174,
+    "fold_log_loss": [
+      0.3546588342872403,
+      0.3292094585829345,
+      0.334348198543323,
+      0.32736971224447614,
+      0.3411061907381083
+    ]
+  },
+  "variants": {
+    "pool of all three": {
+      "log_loss": 0.3373382864428377,
+      "accuracy": 0.8718524950201747
+    },
+    "pool without stylometry": {
+      "log_loss": 0.33952663386978227,
+      "accuracy": 0.8711885183104346
+    },
+    "pool without CNN": {
+      "log_loss": 0.3402788711388349,
+      "accuracy": 0.8724653965983963
+    },
+    "1. NB-weighted n-gram LR": {
+      "log_loss": 0.34414455004144084,
+      "accuracy": 0.8719035701516932
+    },
+    "2. Stylometry + topics": {
+      "log_loss": 0.6275671919986034,
+      "accuracy": 0.7355329689973952
+    },
+    "3. Char + word CNN": {
+      "log_loss": 0.4821947998852917,
+      "accuracy": 0.8065784769395781
+    }
+  },
+  "decomposition": {
+    "nblr (best single)": {
+      "mean_loss": 0.34414455004144084,
+      "errors_pct": 0.12809642984830685,
+      "errors_share_of_loss": 0.6715279038374239,
+      "worst5_share": 0.41758725871939556,
+      "loss_on_correct": 0.12964952272803715,
+      "loss_on_wrong": 1.804130439701375,
+      "confidence_on_errors": 0.6818269442032312,
+      "confident_errors_gt_0_9": 286.0
+    },
+    "pool of all three": {
+      "mean_loss": 0.3373382864428377,
+      "errors_pct": 0.12814750497982533,
+      "errors_share_of_loss": 0.6785050747838723,
+      "worst5_share": 0.4193047285839559,
+      "loss_on_correct": 0.12439322912067496,
+      "loss_on_wrong": 1.7861115540750887,
+      "confidence_on_errors": 0.6807443922860206,
+      "confident_errors_gt_0_9": 272.0
+    }
+  }
+}

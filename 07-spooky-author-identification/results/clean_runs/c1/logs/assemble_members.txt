@@ -1,0 +1,4 @@
+nblr       0.3481 acc 0.8703
+style_gbdt 0.6322 acc 0.7338
+wordlm     0.3448 acc 0.8625
+fasttext   0.4724 acc 0.8299

@@ -1,0 +1,4 @@
+stack of 8 [nblr,style_gbdt,cnn,charlm,wordlm,glm,fasttext,char_svm]: log loss 0.2492 [0.2409 0.2597] acc 0.9021
+stack of 7 [nblr,style_gbdt,charlm,wordlm,glm,fasttext,char_svm]: log loss 0.2493 [0.2412 0.2595] acc 0.9023
+stack of 6 [nblr,style_gbdt,charlm,wordlm,glm,char_svm]: log loss 0.2496 [0.2411 0.2595] acc 0.9021
+stack of 5 [nblr,style_gbdt,charlm,glm,char_svm]: log loss 0.2498 [0.2414 0.2595] acc 0.9024

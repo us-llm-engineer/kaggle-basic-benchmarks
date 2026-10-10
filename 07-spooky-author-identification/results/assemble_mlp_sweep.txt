@@ -1,0 +1,15 @@
+N4_lr0.0001_dp0.5_a0.0001_s7       raw 0.3918 -> T-scaled 0.3921 acc 0.8443 | best real epoch [19.5, 22.5, 20.8, 21.0, 25.8] | evals run [159, 171, 164, 165, 184]
+N4_lr0.0001_dp0_a0.0001_s7         raw 0.3951 -> T-scaled 0.3949 acc 0.8435 | best real epoch [17.8, 19.2, 18.0, 18.0, 21.8] | evals run [152, 158, 153, 153, 168]
+N4_lr0.0003_dp0.5_a0.0001_s7       raw 0.3919 -> T-scaled 0.3920 acc 0.8428 | best real epoch [6.8, 7.8, 7.0, 7.0, 8.2] | evals run [108, 112, 109, 109, 114]
+N4_lr0.0003_dp0_a0.0001_s7         raw 0.3958 -> T-scaled 0.3959 acc 0.8432 | best real epoch [5.8, 6.8, 5.8, 5.8, 7.2] | evals run [104, 108, 104, 104, 110]
+N4_lr3e-05_dp0.5_a0.0001_s7        raw 0.3913 -> T-scaled 0.3917 acc 0.8449 | best real epoch [71.2, 79.8, 74.0, 73.8, 89.0] | evals run [366, 400, 377, 376, 437]
+N4_lr3e-05_dp0_a0.0001_s7          raw 0.3950 -> T-scaled 0.3951 acc 0.8435 | best real epoch [60.2, 69.8, 65.8, 65.5, 76.5] | evals run [322, 359, 344, 343, 387]
+N5_lr0.0001_dp0.5_a0.0001_s7       raw 0.3773 -> T-scaled 0.3754 acc 0.8550 | best real epoch [21.8, 24.2, 20.8, 22.2, 23.8] | evals run [168, 178, 164, 170, 176]
+N5_lr0.0001_dp0_a0.0001_s7         raw 0.3835 -> T-scaled 0.3817 acc 0.8507 | best real epoch [19.8, 22.2, 19.0, 21.0, 21.8] | evals run [160, 170, 157, 165, 168]
+N5_lr0.0003_dp0.5_a0.0001_s7       raw 0.3769 -> T-scaled 0.3761 acc 0.8541 | best real epoch [7.5, 8.0, 7.0, 7.0, 7.8] | evals run [111, 113, 109, 109, 112]
+N5_lr0.0003_dp0_a0.0001_s7         raw 0.3829 -> T-scaled 0.3815 acc 0.8517 | best real epoch [6.8, 6.8, 5.8, 6.0, 7.2] | evals run [108, 108, 104, 105, 110]
+N5_lr3e-05_dp0.5_a0.0001_s7        raw 0.3775 -> T-scaled 0.3760 acc 0.8544 | best real epoch [78.5, 83.5, 74.2, 77.0, 80.0] | evals run [395, 415, 378, 389, 401]
+N5_lr3e-05_dp0_a0.0001_s7          raw 0.3840 -> T-scaled 0.3822 acc 0.8513 | best real epoch [69.0, 75.2, 65.8, 69.0, 76.5] | evals run [357, 382, 344, 357, 387]
+BEST N5_lr0.0001_dp0.5_a0.0001_s7 0.3754
+ensemble of 6 N5 configurations (geometric mean): log loss 0.3784 [0.3688 0.3884] acc 0.8533
+ensemble of 6 N4 configurations (geometric mean): log loss 0.3931 [0.3847 0.4026] acc 0.8438
